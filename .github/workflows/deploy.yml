@@ -7,24 +7,27 @@ jobs:
   deploy:
     name: deploy app
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ "16.x" ]
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
         with:
-          node-version: ${{matrix.node-version}}
+          node-version: "20.x"
+          cache: pnpm
+
       - name: install packages
-        run: yarn install
+        run: pnpm install
+
       - name: registry github user
         run: |
           git config --global user.email "jalesgervazzi@gmail.com"
           git config --global user.name "JoseAle2610"
-          
+
       - name: deploy the app
         run: |
           git remote set-url origin https://git:${GH_TOKEN}@github.com/JoseAle2610/JoseAle2610.github.io.git
-          yarn run deploy
+          pnpm run deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}

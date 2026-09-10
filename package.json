@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://joseale2610.github.io",
+  "packageManager": "pnpm@9.15.9",
   "dependencies": {
     "bootstrap-icons": "1.10.5",
     "react": "18.2.0",
