@@ -108,7 +108,7 @@ export const Home = () => {
               {(index === words.length && index === i+1)  && <Blink>|</Blink>}
             </div>)}
           </h1>
-          <ButtonTransparent href='/about' onClick={navigate}>Mas sobre mi</ButtonTransparent>
+          <ButtonTransparent href='/about' onClick={navigate}>Más sobre mí</ButtonTransparent>
           <ButtonWhite href="/curriculum-jose-suarez.pdf" download>Descargar CV</ButtonWhite>
           <ListSocial style={{display: !writeFinish && 'none'}}>
             {info.social.map((elem, index) => (

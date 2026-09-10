@@ -17,9 +17,9 @@ function App() {
       <Router>
         <Navbar routes={[
           {to: '/', name: 'Inicio'},
-          {to: '/about', name: 'Sobre mi'},
+          {to: '/about', name: 'Sobre mí'},
           {to: '/works', name: 'Trabajos'},
-          {to: '/resume', name: 'Curriculum'},
+          {to: '/resume', name: 'Currículum'},
         ]} />
         <Routes>
           <Route path='/' element={<Home />} />

@@ -78,7 +78,7 @@ export const Contact = () => {
           ))
         }
       </ListGroup>
-        <h2>Redes Sociles</h2>
+        <h2>Redes Sociales</h2>
         <ListSocial>
           {info.social.map((elem, index) => (
             <Social key={index} link={elem.link} icon={elem.icon} />
