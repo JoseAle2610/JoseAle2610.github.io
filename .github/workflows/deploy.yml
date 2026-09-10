@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - main
+
+permissions:
+  contents: write
+
 jobs:
   deploy:
     name: deploy app
@@ -20,14 +24,11 @@ jobs:
       - name: install packages
         run: pnpm install
 
-      - name: registry github user
-        run: |
-          git config --global user.email "jalesgervazzi@gmail.com"
-          git config --global user.name "JoseAle2610"
+      - name: build
+        run: pnpm run build
 
-      - name: deploy the app
-        run: |
-          git remote set-url origin https://git:${GH_TOKEN}@github.com/JoseAle2610/JoseAle2610.github.io.git
-          pnpm run deploy
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
